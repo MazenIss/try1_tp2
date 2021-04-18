@@ -43,7 +43,7 @@ Bienevenu chez nous voici votre listes de personnes:
     </tbody>
 </table>
 <form action="delete.php"
-      method="get">
+      method="post">
     <div class="form-group">
         <label for="exampledelete">Enter a name of a person u want to delete</label>
         <input
@@ -55,5 +55,41 @@ Bienevenu chez nous voici votre listes de personnes:
     </div>
     <button type="delete" class="btn btn-primary">delete</button>
 </form>
+<div name="ajt">
+   <form action="ajout.php"
+      method="post">
+    <div class="form-group">
+        <label for="nom">Enter the name of the person u want to add</label>
+        <input
+                type="text"
+                name="ajoutname"
+                class="form-control"
+                id="exampleajout"
+                placeholder="the name of the person"
+        <label for="prenom">Enter the first name of the person u want to add</label>
+        <input
+                type="text"
+                name="ajoutprenom"
+                class="form-control"
+                id="exampleajout"
+                placeholder="the first  name of the person"
+        <label for="age">Enter the age of the person u want to add</label>
+        <input
+                type="text"
+                name="ajoutage"
+                class="form-control"
+                id="exampleajout"
+                placeholder="the age of the person"
+        <label for="section">Enter the study field of the person u want to add</label>
+        <input
+                type="text"
+                name="ajoutsection"
+                class="form-control"
+                id="exampleajout"
+                placeholder="the study field of the person"
+    </div>
+    <button type="submit" class="btn btn-primary">ajouter</button>
+  </form>
+</div>
 </body>
 </html>

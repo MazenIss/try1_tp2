@@ -1,7 +1,6 @@
 <?php
 session_start();
-include 'home.php';
-$name=$_GET['deletebyname'];
+$name=$_POST['deletebyname'];
 if(isset($name)){
 $request = "delete from personnes where nom=? ";
 $bddd=$GLOBALS['a'];
