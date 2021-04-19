@@ -13,7 +13,17 @@ if(isset($cur) && $cur!=""){
     $prenom=(isset($_POST['changeprenom']) && $_POST['changeprenom']!="")? $_POST['changeprenom'] : $res->prenom;
     $age=(isset($_POST['changeage']) && $_POST['changeage']!=0)? $_POST['changeage'] : $res->age;
     $section=(isset($_POST['changesection']) && $_POST['changesection']!="")? $_POST['changesection'] : $res->section;
-    $p->modifier($cur,$name,$prenom,$age,$section);
+    if(isset($_FILES['changepic']['tmp_name']) && ($_FILES['changepic']['tmp_name'])){
+        $pic=uniqid().$_FILES['changepic']['name'];
+        $pat='pictures/'.$pic;
+        copy($_FILES['changepic']['tmp_name'],$pat);
+    }else{
+        $pic=$res->picture;
+    }
+    $p->modifier($cur,$name,$prenom,$age,$section,$pic);
+
 }
+
+
 header('location:home.php');
 

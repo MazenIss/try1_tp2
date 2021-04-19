@@ -28,17 +28,18 @@ class Repository
         $request = "delete  from personnes where nom = ?";
         $response =$this->bd->prepare($request);
         $response->execute([$name]);
+        unlink('/pictures/$this->picture');
 
     }
-    public function modifier($cur,$name,$prenom,$age,$section){
-        $requete="UPDATE ".$this->tableName." SET nom=? , prenom=?, age=? , section=? where nom=?";
+    public function modifier($cur,$name,$prenom,$age,$section,$pic){
+        $requete="UPDATE ".$this->tableName." SET nom=? , prenom=?, age=? , section=? ,picture=? where nom=?";
         $rep=$this->bd->prepare($requete);
-        $rep->execute([$name,$prenom,$age,$section,$cur]);
+        $rep->execute([$name,$prenom,$age,$section,$pic,$cur]);
     }
-    public function ajouter($name,$prenom,$age,$section){
-        $request="INSERT INTO  personnes (`nom`, `prenom`, `age`,`section` ) VALUES (?,?,?,?)";
+    public function ajouter($name,$prenom,$age,$section,$pic){
+        $request="INSERT INTO  personnes (`nom`, `prenom`, `age`,`section`,`picture`) VALUES (?,?,?,?,?)";
         $rep=$this->bd->prepare($request);
-        $rep->execute([$name,$prenom,$age,$section]);
+        $rep->execute([$name,$prenom,$age,$section,$pic]);
 
     }
 }

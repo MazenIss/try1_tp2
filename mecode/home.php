@@ -18,6 +18,7 @@ Bienevenu chez nous voici votre listes de personnes:
         <th scope="col">nom</th>
         <th scope="col">prenom</th>
         <th scope="col">age</th>
+        <th scope="col">section</th>
         <th scope="col">photo</th>
     </tr>
     </thead>
@@ -29,6 +30,7 @@ Bienevenu chez nous voici votre listes de personnes:
             <td><?= $personne->prenom ?></td>
             <td><?= $personne->age ?></td>
             <td><?= $personne->section ?></td>
+            <td><img style="width:200px" src="classes+pictures/pictures/<?= $personne->picture?>"/></td>
         </tr>
         <?php
     }
@@ -51,7 +53,7 @@ Bienevenu chez nous voici votre listes de personnes:
     <button  class="btn btn-primary">delete</button>
 </form>
 <div name="ajt">
-   <form action="ajout.php"
+   <form action="ajout.php" enctype="multipart/form-data"
       method="post">
     <div class="form-group">
         <label for="nom">Enter the name of the person u want to add</label>
@@ -82,12 +84,14 @@ Bienevenu chez nous voici votre listes de personnes:
                 class="form-control"
                 id="exampleajout"
                 placeholder="the study field of the person"
+        <label for=""image>Select image to upload:</label>
+        <input type="file" name="ajoutpic" id="fileToUpload">
     </div>
     <button  class="btn btn-primary">ajouter</button>
   </form>
 </div>
 <div name="change">
-    <form action="change.php"
+    <form action="change.php" enctype="multipart/form-data"
           method="post">
         <div class="form-group">
             <label for="nom">Enter the name of the person u want to change his info</label>
@@ -120,7 +124,9 @@ Bienevenu chez nous voici votre listes de personnes:
                     type="text"
                     name="changesection"
                     class="form-control"
-                    placeholder="the study field of the person"
+                    placeholder="the new study field"
+            <label for=""image>Select image to upload:</label>
+            <input type="file" name="changepic" id="fileToUpload">
         </div>
         <button type="submit" class="btn btn-primary">modifier</button>
     </form>

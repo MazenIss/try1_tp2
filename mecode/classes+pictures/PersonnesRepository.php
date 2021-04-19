@@ -8,12 +8,14 @@ class PersonnesRepository extends Repository
     private $prenom;
     private $age;
     private $section;
-    public function __construct($nom = '', $prenom = '', $age = 0, $section = '')
+    private $picture;
+    public function __construct($nom = '', $prenom = '', $age = 0, $section = '',$picture='607d8efc6ee8113.0')
     {   parent::__construct('personnes');
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->age = $age;
         $this->section = $section;
+        $this->picture=$picture;
 
     }
 
