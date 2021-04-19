@@ -1,5 +1,5 @@
 <?php
 function load($className){
-    include_once ''.$className.php;
+    include_once "classes/$className.php";
 }
 spl_autoload_register('load');

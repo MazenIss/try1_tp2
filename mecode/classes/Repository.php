@@ -18,16 +18,27 @@ class Repository
         return $response->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function findById($id) {
-        $request = "select * from ".$this->tableName ." where id = ?";
+    public function findByname($cur) {
+        $request = "select * from personnes where nom = ?";
         $response =$this->bd->prepare($request);
-        $response->execute([$id]);
+        $response->execute([$cur]);
         return $response->fetch(PDO::FETCH_OBJ);
     }
     public function supprimer($name) {
-        $request = "delete  from ".$this->tableName ." where name = ?";
+        $request = "delete  from personnes where nom = ?";
         $response =$this->bd->prepare($request);
         $response->execute([$name]);
-        return $response->fetch(PDO::FETCH_OBJ);
+
+    }
+    public function modifier($cur,$name,$prenom,$age,$section){
+        $requete="UPDATE ".$this->tableName." SET nom=? , prenom=?, age=? , section=? where nom=?";
+        $rep=$this->bd->prepare($requete);
+        $rep->execute([$name,$prenom,$age,$section,$cur]);
+    }
+    public function ajouter($name,$prenom,$age,$section){
+        $request="INSERT INTO  personnes (`nom`, `prenom`, `age`,`section` ) VALUES (?,?,?,?)";
+        $rep=$this->bd->prepare($request);
+        $rep->execute([$name,$prenom,$age,$section]);
+
     }
 }
